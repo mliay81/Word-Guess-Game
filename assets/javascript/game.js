@@ -1,3 +1,18 @@
+
+// THIS displayed, don't change
+window.onload = function() {
+    var lives = 2;
+    document.getElementById("myLives").innerHTML = lives
+
+    // function myFunction() {
+        // document.getElementById("guesses").innerHTML = guess
+    // }
+    // The logic that calls the function to start needs to be up here
+   
+$(button).on("click", function() {
+    document.write(this.alphabet)
+})
+
 // Word bank - Cocktail themed
 var words = [
     "old fashioned",
@@ -8,6 +23,8 @@ var words = [
     "boulevardier"
 ]
 
+var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+
 // Word generator
 var word = words[Math.floor(Math.random() * words.length)]
 
@@ -16,15 +33,14 @@ var word = words[Math.floor(Math.random() * words.length)]
 // How to track lives?
 // How to even make them display?
 // Tracking lives left function
-var lives = console.log("5")
-var showLives = console.log("myLives")
-// Not sure why this won't work
-// .innerHTML = "3"
-// Not even console log is working
+// var misses = 10;
+
+var showLives = "myLives";
+
 comments = function () {
     console.log("You have " + lives + " lives")
     if (lives < 1) {
-      console.log("Game Over")
+    document.getElementById("game_over").innerHTML = ("Game Over")
     }
 }
 
@@ -40,8 +56,11 @@ var remainingLetters = word.length
 // This is also where we can make it so you lose if you run out of guesses
 while (remainingLetters > 0) {
     alert(answerArray.join(" "))
+// need a flag to say whether or not the letter guessed doesn't match any letter in the word. need to set it after we've gone throught eh whole word
 
+     
 var guess = prompt("Guess a letter to start, or hit Cancel if you're not up to it.")
+var flag = false; 
 if (guess === null) {
     break
 } else if (guess.length !== 1) {
@@ -51,11 +70,18 @@ if (guess === null) {
         if (word[j] === guess) {
             answerArray[j] = guess
             remainingLetters--
+            flag = true
         }
+    }
+    if (flag == false) {
+        lives--
+        comments()
     }
 }
 }
 
 // Success; turns these into innerHTML
 (answerArray.join(" "))
-alert("Nice! The word was " + word)
+// alert("Nice! The word was " + word)
+document.getElementById("success").innerHTML = ("The word was " + word)
+}
