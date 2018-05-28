@@ -5,10 +5,14 @@
     <title>Hangman!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="C:\Users\Mike\Desktop\mliay81.github.io\Word-Guess-Game\assets\css\style.css">
-    <script src="C:\Users\Mike\Desktop\mliay81.github.io\Word-Guess-Game\assets\javascript\game.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
+    <script src="assets\javascript\game.js"></script>
 </head>
 <body>
-
+    <div id="display"></div>
+    <div id="buttons"></div>
+    <button id="clear">clear</button>
 
     <p id="myLives">Guesses Remaining: </p>
 
@@ -20,8 +24,11 @@
 
     <p id="game_over"></p>
 
+    <!-- onkeypress is good, go with it. -->
     <input type="text" onkeypress="myFunction()">
     <p id="guesses"></p>
+
+    <div id="lettersGuessed"></div>
     
 </body>
 </html>
